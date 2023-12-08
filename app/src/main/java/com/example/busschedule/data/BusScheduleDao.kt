@@ -4,9 +4,12 @@ import androidx.room.Dao
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Provides access to read/write operations on the schedule table.
+ * Used by the view models to format the query results for use in the UI.
+ */
 @Dao
-
-interface ScheduleDao {
+interface BusScheduleDao {
     @Query(
         """
         SELECT * FROM schedule 
@@ -23,5 +26,4 @@ interface ScheduleDao {
         """
     )
     fun getByStopName(stopName: String): Flow<List<BusSchedule>>
-
 }
